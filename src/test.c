@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/21 17:35:23 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:27:49 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 #define MLX_ERROR 1
 #define ESC 0xFF1B
+
+int	handle_no_event(void	*data)
+{
+	return (0);
+}
 
 int	handle_input(int keysym, t_data *data)
 {
@@ -35,10 +40,9 @@ int	main(void)
 		free(data.win_ptr);
 		return (MLX_ERROR);
 	}
+	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
 	mlx_key_hook(data.win_ptr, &handle_input, &data);
-
 	mlx_loop(data.mlx_ptr);
-
-	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }

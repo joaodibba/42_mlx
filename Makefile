@@ -6,13 +6,13 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 11:37:14 by helferna          #+#    #+#              #
-#    Updated: 2023/03/21 15:38:40 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/03/22 11:28:04 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	mlxtest
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra #-Werror
 MLX			=	minilibx-linux/Makefile.gen
 #MLX			=	minilibx-mac-osx/Makefile.gen
 LFT			=	libft/libft.a

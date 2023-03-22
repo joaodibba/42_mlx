@@ -6,14 +6,14 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:23:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/21 16:25:25 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:10:19 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLXTEST_H
 # define MLXTEST_H
 
-# include "../minilibx-mac-osx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
