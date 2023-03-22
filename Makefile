@@ -13,13 +13,13 @@
 NAME		=	mlxtest
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror
-#MLX			=	minilibx-linux/Makefile.gen
-MLX			=	minilibx-mac-osx/Makefile.gen
+MLX			=	minilibx-linux/Makefile.gen
+#MLX			=	minilibx-mac-osx/Makefile.gen
 LFT			=	libft/libft.a
-INC			=	-I ./libft -I ./minilibx-mac-osx
-LIB			=	-L ./libft -lft -L ./minilibx-mac-osx -lmlx -framework OpenGL -framework AppKit
-#INC			=	-I ./libft -I ./minilibx-linux
-#LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+#INC			=	-I ./libft -I ./minilibx-mac-osx
+#LIB			=	-L ./libft -lft -L ./minilibx-mac-osx -lmlx -framework OpenGL -framework AppKit
+INC			=	-I ./libft -I ./minilibx-linux
+LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 OBJ			= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 SRC			=	$(wildcard src/*.c)
 
