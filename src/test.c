@@ -21,8 +21,24 @@
 
 #define RED_PIXEL 0xFF0000
 #define GREEN_PIXEL 0xFF00
-
+/*
 void	renderbackground(t_data *data, int color)
+{
+    int	i;
+    int	j;
+
+    if (data->win_ptr == NULL)
+        return ;
+    i = 0;
+    while (i < WINDOW_HEIGHT)
+    {
+        j = 0;
+        while (j < WINDOW_WIDTH)
+            mlx_pixel_put(data->mlx_ptr, data->win_ptr, j++, i, color);
+        ++i;
+    }
+}
+
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == ESC)
@@ -79,3 +95,4 @@ int	main(void)
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }
+*/
