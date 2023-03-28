@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   teste6.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/22 14:46:30 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:28:12 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,6 @@
 #define GREEN_PIXEL 0XFF00
 #define WHITE_PIXEL 0XFFFFFF
 
-/*
-dont uncomment this
-already defined in the header
-typedef struct s_rect
-
-{
-    int x;
-    int y;
-    int width;
-    int height;
-    int color;
-}   t_rect;
-
-already defined in the header file
-typedef struct s_data
-{
-    void    *mlx_ptr;
-    void    *win_ptr;
-}   t_data;
-dont uncomment this*/
-/*
 void render_background(t_data *data, int color)
 {
     int j;
@@ -124,4 +103,3 @@ int	main(void)
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }
-*/
