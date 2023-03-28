@@ -9,8 +9,11 @@
 /*   Updated: 2023/03/22 14:46:30 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include "../include/mlxtest.h"
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+#define MLX_ERROR 1
 
 int	main(void)
 {
@@ -26,7 +29,8 @@ int	main(void)
         free(win_ptr);
         return (MLX_ERROR);
     }
-	mlx_loop(data.mlx_ptr);
-	mlx_destroy_display(data.mlx_ptr);
-	free(data.mlx_ptr);
+	mlx_loop(mlx_ptr);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
 }
+*/

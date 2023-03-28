@@ -9,36 +9,83 @@
 /*   Updated: 2023/03/22 14:46:30 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include "../include/mlxtest.h"
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
 #define MLX_ERROR 1
-#define ESCAPE 0xFF1B
+#define ESCAPE 65307
 
-//dataa because i'm defining data in the header file
-typedef struct s_dataa
+//colors
+#define RED_PIXEL 0XFF0000
+#define GREEN_PIXEL 0XFF00
+
+/*
+dont uncomment this
+already defined in the header
+typedef struct s_rect
+
+{
+    int x;
+    int y;
+    int width;
+    int height;
+    int color;
+}   t_rect;
+
+already defined in the header file
+typedef struct s_data
 {
     void    *mlx_ptr;
     void    *win_ptr;
-}   t_dataa;
-
-int handle_no_event(void *data)
+}   t_data;
+dont uncomment this*/
+/*
+int render_rect(t_data *data, t_rect rect)
 {
-    (void)data;
+    int i;
+    int j;
+
+    if(data->win_ptr == NULL)
+        return (1);
+    i = rect.y;
+    while (i < rect.y + rect.height)
+    {
+        j = rect.x;
+        while(j <rect.x + rect.width)
+            mlx_pixel_put(data->mlx_ptr, data->win_ptr, j++, i, rect.color);
+        ++i;
+    }
+    return (0);
+}
+int handle_keypress(int keysym, t_data *data)
+{
+    if (keysym == ESCAPE)
+    {
+        mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+        data->win_ptr = NULL;
+    }
+    printf ("Keypress: %d\n", keysym);
     return (0);
 }
 
-int handle_input(int keysym, t_dataa *data)
+int handle_keyrelease(int keysym, void *data)
 {
-    if (keysym == ESCAPE)
-        mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+    (void)data;
+    printf("keyrelease: %d\n", keysym);
+    return (0);
+}
+
+int render(t_data *data)
+{
+    render_rect(data, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, GREEN_PIXEL});
+    render_rect(data, (t_rect){0, 0, 100, 100, RED_PIXEL});
     return (0);
 }
 int	main(void)
 {
-    t_dataa data;
+    t_data data;
 
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
@@ -49,8 +96,9 @@ int	main(void)
         free(data.win_ptr);
         return (MLX_ERROR);
     }
-	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
-    mlx_key_hook(data.win_ptr, &handle_input, &data);
+    mlx_loop_hook(data.mlx_ptr, &render, &data);
+    mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
+    mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
 
     mlx_loop(data.mlx_ptr);
 

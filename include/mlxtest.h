@@ -20,40 +20,30 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-}		t_data;
-
-typedef struct s_win
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		height;
-	int		width;
-}		t_win;
-
-typedef struct s_img
-{
-	t_win	win;
-	void	*img_ptr;
-	char	*addr;
-	int		h;
-	int		w;
-	int		bpp;
-	int		endian;
-	int		line_len;
-}		t_img;
-
 typedef struct s_rect
 {
 	int		x;
 	int		y;
 	int		width;
-	int		heigth;
+	int		height;
 	int		color;
 }		t_rect;
 
-t_win	new_program(int w, int h, char *str);
+typedef struct s_img
+{
+    void    *mlx_img;
+    char    *addr;
+    int     bpp;
+    int     line_len;
+    int     endian;
+}   t_img;
+
+typedef struct s_data
+{
+    void	*mlx_ptr;
+    void	*win_ptr;
+    t_img   img;
+    int     cur_img;
+}		t_data;
+
 #endif
