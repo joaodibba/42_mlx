@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   teste7.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/22 14:46:30 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:10:07 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,29 @@ int	render(t_data *data)
     if (data->win_ptr == NULL)
         return (1);
     render_background(&data->img, WHITE_PIXEL);
-    render_rect(&data->img, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, GREEN_PIXEL});
-    render_rect(&data->img, (t_rect){0, 0, 100, 100, RED_PIXEL});
+        int x = 0;
+    int y = 0;
+    while (y < WINDOW_HEIGHT) {
+        x = 0;
+        while (x < WINDOW_WIDTH) {
+            if ((x / 100) % 2 == 0) {
+                if ((y / 100) % 2 == 0) {
+                    render_rect(&data->img, (t_rect){x, y, 100, 100, WHITE_PIXEL});
+                } else {
+                    render_rect(&data->img, (t_rect){x, y, 100, 100, BLACK_PIXEL});
+                }
+            } else {
+                if ((y / 100) % 2 == 0) {
+                    render_rect(&data->img, (t_rect){x, y, 100, 100, BLACK_PIXEL});
+                } else {
+                    render_rect(&data->img, (t_rect){x, y, 100, 100, WHITE_PIXEL});
+                }
+            }
+            x += 100;
+        }
+        y += 100;
+    }
+
 
     mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 
