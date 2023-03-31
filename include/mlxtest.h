@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:23:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/22 12:40:43 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:38:22 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 # include <stdio.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 800
+
+#define MLX_ERROR 1
+#define ESCAPE 65307
+
+//colors
+#define RED_PIXEL 0XFF0000
+#define GREEN_PIXEL 0XFF00
+#define WHITE_PIXEL 0XFFFFFF
 
 typedef struct s_rect
 {
@@ -38,12 +49,21 @@ typedef struct s_img
     int     endian;
 }   t_img;
 
+typedef struct s_player
+{
+    int x;
+    int y;
+}   t_player;
+
 typedef struct s_data
 {
     void	*mlx_ptr;
-    void	*win_ptr;
-    t_img   img;
+    void   	*win_ptr;
+    t_img      img;
+    t_player    *player;
     int     cur_img;
 }		t_data;
+
+
 
 #endif

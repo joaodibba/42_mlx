@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste6.c                                           :+:      :+:    :+:   */
+/*   teste6                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/28 17:28:12 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:42:02 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/mlxtest.h"
-
-#define WINDOW_WIDTH 1280
-#define WINDOW_HEIGHT 720
-#define MLX_ERROR 1
-#define ESCAPE 65307
-
-//colors
-#define RED_PIXEL 0XFF0000
-#define GREEN_PIXEL 0XFF00
-#define WHITE_PIXEL 0XFFFFFF
 
 void render_background(t_data *data, int color)
 {

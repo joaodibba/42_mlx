@@ -6,21 +6,11 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/28 17:25:16 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:48:26 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/mlxtest.h"
-
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 800
-#define MLX_ERROR 1
-#define ESCAPE 65307
-
-//colors
-#define RED_PIXEL 0XFF0000
-#define GREEN_PIXEL 0XFF00
-#define WHITE_PIXEL 0XFFFFFF
 
 void	img_pix_put(t_img *img, int x, int y, int color)
 {
@@ -31,18 +21,17 @@ void	img_pix_put(t_img *img, int x, int y, int color)
     pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
     while (i >= 0)
     {
-        /* big endian, MSB is the leftmost bit */
+        //big endian, MSB is the leftmost bit
         if (img->endian != 0)
             *pixel++ = (color >> i) & 0xFF;
-            /* little endian, LSB is the leftmost bit */
+        //little endian, LSB is the leftmost bit 
         else
             *pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
         i -= 8;
     }
 }
 
-/* The x and y coordinates of the rect corresponds to its upper left corner. */
-
+//The x and y coordinates of the rect corresponds to its upper left corner.
 int render_rect(t_img *img, t_rect rect)
 {
     int	i;
@@ -69,20 +58,42 @@ void	render_background(t_img *img, int color)
     {
         j = 0;
         while (j < WINDOW_WIDTH)
-        {
             img_pix_put(img, j++, i, color);
-        }
         ++i;
     }
 }
 
 int	handle_keypress(int keysym, t_data *data)
 {
+    t_player *player = (t_player *)data->player;
+    int x = player->x;
+    int y = player->y;
+
     if (keysym == ESCAPE)
     {
         mlx_destroy_window(data->mlx_ptr, data->win_ptr);
         data->win_ptr = NULL;
     }
+    else if(keysym == 'w')
+        y -= 10;
+    else if(keysym == 's')
+        y += 10;
+    else if(keysym == 'a')
+        x -= 10;
+    else if(keysym == 'd')
+        x += 10;
+    if (x < 0)
+        x = 0;
+    if (x > WINDOW_WIDTH - 50)
+        x = WINDOW_WIDTH - 50;
+    if (y < 0)
+        y = 0;
+    if (y > WINDOW_HEIGHT)
+        y = WINDOW_HEIGHT - 50;
+    
+    player->x = x;
+    player->y = y;
+    
     return (0);
 }
 
@@ -91,29 +102,9 @@ int	render(t_data *data)
     if (data->win_ptr == NULL)
         return (1);
     render_background(&data->img, WHITE_PIXEL);
-        int x = 0;
-    int y = 0;
-    while (y < WINDOW_HEIGHT) {
-        x = 0;
-        while (x < WINDOW_WIDTH) {
-            if ((x / 100) % 2 == 0) {
-                if ((y / 100) % 2 == 0) {
-                    render_rect(&data->img, (t_rect){x, y, 100, 100, WHITE_PIXEL});
-                } else {
-                    render_rect(&data->img, (t_rect){x, y, 100, 100, RED_PIXEL});
-                }
-            } else {
-                if ((y / 100) % 2 == 0) {
-                    render_rect(&data->img, (t_rect){x, y, 100, 100, RED_PIXEL});
-                } else {
-                    render_rect(&data->img, (t_rect){x, y, 100, 100, WHITE_PIXEL});
-                }
-            }
-            x += 100;
-        }
-        y += 100;
-    }
-
+    int x = data->player->x;
+    int y = data->player->y;
+    render_rect(&data->img, (t_rect){x, y, 50, 50, RED_PIXEL});
 
     mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 
@@ -133,8 +124,10 @@ int	main(void)
         free(data.win_ptr);
         return (MLX_ERROR);
     }
-
-    /* Setup hooks */
+    /* Initialize player position*/
+    data.player->x = 100;
+    data.player->y = 100;
+    //Setup hooks
     data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
@@ -145,7 +138,7 @@ int	main(void)
 
     mlx_loop(data.mlx_ptr);
 
-    /* we will exit the loop if there's no window left, and execute this code */
+    //we will exit the loop if there's no window left, and execute this code
     mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
     mlx_destroy_display(data.mlx_ptr);
     free(data.mlx_ptr);

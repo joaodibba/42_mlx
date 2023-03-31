@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   teste4                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/22 14:46:30 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:41:38 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include "../include/mlxtest.h"
 
-#define WINDOW_WIDTH 1280
-#define WINDOW_HEIGHT 720
-#define MLX_ERROR 1
-#define ESCAPE 65307
-
-//colors
-#define RED_PIXEL 0XFF0000
-
-//dataa because i'm defining data in the header file
-typedef struct s_dataa
-{
-    void    *mlx_ptr;
-    void    *win_ptr;
-}   t_dataa;
-
-int handle_keypress(int keysym, t_dataa *data)
+int handle_keypress(int keysym, t_data *data)
 {
     if (keysym == ESCAPE)
     {
@@ -54,7 +39,7 @@ int render(t_data *data)
 }
 int	main(void)
 {
-    t_dataa data;
+    t_data data;
 
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
@@ -74,4 +59,3 @@ int	main(void)
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }
-*/
