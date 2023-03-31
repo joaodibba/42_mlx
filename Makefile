@@ -30,7 +30,7 @@ $(NAME):	$(OBJ)
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C minilibx-mac-osx
+			@make -s -C minilibx-linux
 			@echo " [ OK ] | Minilibx ready!"
 
 $(LFT):		
