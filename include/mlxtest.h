@@ -20,8 +20,8 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 800
+#define WINDOW_WIDTH 1920
+#define WINDOW_HEIGHT 1080
 
 #define MLX_ERROR 1
 #define ESCAPE 65307

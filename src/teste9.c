@@ -146,6 +146,9 @@
 
 #include "../include/mlxtest.h"
 
+#define PLAYER_SIZE 10
+#define PLAYER_SPEED 100
+
 void img_pix_put(t_img *img, int x, int y, int color)
 {
     char *pixel;
@@ -209,21 +212,21 @@ int handle_keypress(int keysym, t_data *data)
         data->win_ptr = NULL;
     }
     else if (keysym == 'w')
-        y -= 10;
+        y -= PLAYER_SPEED;
     else if (keysym == 's')
-        y += 10;
+        y += PLAYER_SPEED;
     else if (keysym == 'a')
-        x -= 10;
+        x -= PLAYER_SPEED;
     else if (keysym == 'd')
-        x += 10;
+        x += PLAYER_SPEED;
     if (x < 0)
         x = 0;
-    if (x > WINDOW_WIDTH - 50)
-        x = WINDOW_WIDTH - 50;
+    if (x > WINDOW_WIDTH - PLAYER_SIZE)
+        x = WINDOW_WIDTH - PLAYER_SIZE;
     if (y < 0)
         y = 0;
-    if (y > WINDOW_HEIGHT - 50)
-        y = WINDOW_HEIGHT - 50;
+    if (y > WINDOW_HEIGHT - PLAYER_SIZE)
+        y = WINDOW_HEIGHT - PLAYER_SIZE;
 
     player->x = x;
     player->y = y;
@@ -238,7 +241,7 @@ int render(t_data *data)
     render_background(&data->img, WHITE_PIXEL);
     int x = data->player->x;
     int y = data->player->y;
-    render_rect(&data->img, (t_rect){x, y, 50, 50, RED_PIXEL});
+    render_rect(&data->img, (t_rect){x, y, PLAYER_SIZE, PLAYER_SIZE, RED_PIXEL});
 
     mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 
@@ -248,7 +251,7 @@ int render(t_data *data)
 int main(void)
 {
     t_data data;
-
+    // Initialize data structure
     data.mlx_ptr = mlx_init();
     if (data.mlx_ptr == NULL)
         return (MLX_ERROR);
@@ -261,7 +264,7 @@ int main(void)
         return (MLX_ERROR);
     }
 
-    /* Initialize player position */
+    // Initialize player position
     t_player player;
     player.x = 100;
     player.y = 100;
@@ -271,13 +274,12 @@ int main(void)
     data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
     data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
                                       &data.img.line_len, &data.img.endian);
-
     mlx_loop_hook(data.mlx_ptr, &render, &data);
     mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 
     mlx_loop(data.mlx_ptr);
 
-    // We will exit the loop if there's no window left, and execute this code
+    // Cleanup (When there's no window left)
     mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
     mlx_destroy_display(data.mlx_ptr);
     free(data.mlx_ptr);
