@@ -6,22 +6,28 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 11:37:14 by helferna          #+#    #+#              #
-#    Updated: 2023/03/22 12:11:32 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/04/04 18:03:21 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	mlxtest
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror
-MLX			=	minilibx-linux/Makefile.gen
-#MLX			=	minilibx-mac-osx/Makefile.gen
 LFT			=	libft/libft.a
-#INC			=	-I ./libft -I ./minilibx-mac-osx
-#LIB			=	-L ./libft -lft -L ./minilibx-mac-osx -lmlx -framework OpenGL -framework AppKit
-INC			=	-I ./libft -I ./minilibx-linux
-LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 OBJ			= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 SRC			=	$(wildcard src/*.c)
+ifeq ($(shell uname), Darwin)
+	# MacOS flags and includes
+	MLX			=	minilibx-mac-osx/Makefile.gen
+	INC			=	-I ./libft -I ./minilibx-mac-osx
+	LIB			=	-L ./libft -lft -L ./minilibx-mac-osx -lmlx -framework OpenGL -framework AppKit
+else
+	# Linux flags and includes
+	MLX			=	minilibx-linux/Makefile.gen
+	INC			=	-I ./libft -I ./minilibx-linux
+	LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+endif
+
 
 all:		$(MLX) $(LFT) obj $(NAME)
 
@@ -30,7 +36,7 @@ $(NAME):	$(OBJ)
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C minilibx-linux
+			@make -s -C minilibx-mac-osx
 			@echo " [ OK ] | Minilibx ready!"
 
 $(LFT):		
