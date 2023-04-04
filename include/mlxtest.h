@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:23:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/03/29 12:38:22 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/04/04 20:39:23 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <X11/X.h>
+# include <X11/Xlib.h>
 # include <X11/keysym.h>
 
 #define WINDOW_WIDTH 1920

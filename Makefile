@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 11:37:14 by helferna          #+#    #+#              #
-#    Updated: 2023/04/04 18:03:21 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/04/04 20:41:05 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,10 @@ FLAGS		=	-Wall -Wextra -Werror
 LFT			=	libft/libft.a
 OBJ			= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 SRC			=	$(wildcard src/*.c)
-ifeq ($(shell uname), Darwin)
-	# MacOS flags and includes
-	MLX			=	minilibx-mac-osx/Makefile.gen
-	INC			=	-I ./libft -I ./minilibx-mac-osx
-	LIB			=	-L ./libft -lft -L ./minilibx-mac-osx -lmlx -framework OpenGL -framework AppKit
-else
-	# Linux flags and includes
-	MLX			=	minilibx-linux/Makefile.gen
-	INC			=	-I ./libft -I ./minilibx-linux
-	LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
-endif
+MLX			=	minilibx-linux/Makefile.gen
+INC			=	-I ./libft -I ./minilibx-linux
+LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+
 
 
 all:		$(MLX) $(LFT) obj $(NAME)
