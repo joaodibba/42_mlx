@@ -10,15 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	mlxtest
+NAME			=	mlxtest
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS			=	-Wall -Wextra -Werror
 LFT			=	libft/libft.a
-OBJ			= 	$(patsubst src/%.c,obj/%.o,$(SRC))
-SRC			=	$(wildcard src/*.c)
 MLX			=	minilibx-linux/Makefile.gen
 INC			=	-I ./libft -I ./minilibx-linux
 LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+SRC			=	$(wildcard src/*.c)
+OBJ			= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
 
 
@@ -29,7 +29,7 @@ $(NAME):	$(OBJ)
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C minilibx-mac-osx
+			@make -s -C minilibx-linux
 			@echo " [ OK ] | Minilibx ready!"
 
 $(LFT):		
