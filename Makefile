@@ -6,20 +6,19 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 11:37:14 by helferna          #+#    #+#              #
-#    Updated: 2023/04/13 14:08:24 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/04/13 14:10:22 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = mlxtest
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
-LFT = libft/libft.a
-SRC = $(wildcard src/*.c)
-# Use obj/ as the prefix for object file names
-OBJ = $(patsubst src/%.c,obj/%.o,$(SRC))
-MLX = minilibx-linux/Makefile.gen
-INC = -I ./libft -I ./minilibx-linux
-LIB = -L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+NAME		=	mlxtest
+CC			=	gcc
+FLAGS		=	-Wall -Wextra -Werror
+LFT			=	libft/libft.a
+OBJ			= 	$(patsubst src/%.c,obj/%.o,$(SRC))
+SRC			=	$(wildcard src/*.c)
+MLX			=	minilibx-linux/Makefile.gen
+INC			=	-I ./libft -I ./minilibx-linux
+LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 
 # Add dependency on the obj target to ensure that the obj directory exists
 all: $(MLX) $(LFT) obj $(NAME)
@@ -28,9 +27,9 @@ $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -fsanitize=address -o $@ $^ $(LIB)
 
 $(MLX):
-	@echo " [ .. ] | Compiling minilibx.."
-	@make -s -C minilibx-mac-osx
-	@echo " [ OK ] | Minilibx ready!"
+			@echo " [ .. ] | Compiling minilibx.."
+			@make -s -C minilibx-mac-osx
+			@echo " [ OK ] | Minilibx ready!"
 
 $(LFT):
 	@echo " [ .. ] | Compiling libft.."

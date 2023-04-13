@@ -18,11 +18,10 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <X11/X.h>
-# include <X11/Xlib.h>
 # include <X11/keysym.h>
 
-#define WINDOW_WIDTH 1920
-#define WINDOW_HEIGHT 1080
+#define WINDOW_WIDTH 500
+#define WINDOW_HEIGHT 500
 
 #define MLX_ERROR 1
 #define ESCAPE 65307
