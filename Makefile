@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 11:37:14 by helferna          #+#    #+#              #
-#    Updated: 2023/04/13 14:10:22 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/02 16:32:33 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME): $(OBJ)
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C minilibx-mac-osx
+			@make -s -C minilibx-linux
 			@echo " [ OK ] | Minilibx ready!"
 
 $(LFT):
