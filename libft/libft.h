@@ -6,17 +6,22 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:36:49 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/01/20 16:56:35 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/04/24 00:57:49 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define HEXMIN "0123456789abcdef"
+# define HEXMAX "0123456789ABCDEF"
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include <stdarg.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -67,5 +72,13 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char		**ft_split(char const *s, char c);
+int			ft_printf(const char *format, ...);
+int			ft_printfc(char c);
+int			ft_printfselect(char c, va_list args);
+int			ft_printfs(char *str);
+int			ft_printfn(int n);
+int			ft_printfun(unsigned int n);
+int			ft_printfx(unsigned long long n, char *base);
+int			ft_printfp(unsigned long long n);
 
 #endif

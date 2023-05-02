@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/04/06 00:59:50 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:36:37 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int handle_keypress(int keysym, t_data *data)
     int x = player->x;
     int y = player->y;
 
-    if (keysym == ESCAPE)
+    if (keysym == XK_Escape)
     {
         mlx_destroy_window(data->mlx_ptr, data->win_ptr);
         data->win_ptr = NULL;

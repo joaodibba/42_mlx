@@ -6,19 +6,19 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 11:37:14 by helferna          #+#    #+#              #
-#    Updated: 2023/04/04 20:41:05 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/02 16:35:33 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	mlxtest
-CC			=	gcc
-FLAGS			=	-Wall -Wextra -Werror
-LFT			=	libft/libft.a
-MLX			=	minilibx-linux/Makefile.gen
-INC			=	-I ./libft -I ./minilibx-linux
-LIB			=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
-SRC			=	$(wildcard src/*.c)
-OBJ			= 	$(patsubst src/%.c,obj/%.o,$(SRC))
+NAME	=	mlxtest
+CC		=	@gcc
+FLAGS	=	-Wall -Wextra -Werror
+LFT		=	libft/libft.a
+MLX		=	minilibx-linux/Makefile.gen
+INC		=	-I ./libft -I ./minilibx-linux
+LIB		=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+SRC		=	$(wildcard src/*.c)
+OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
 
 
@@ -28,32 +28,37 @@ $(NAME):	$(OBJ)
 			$(CC) $(FLAGS) -fsanitize=address -o $@ $^ $(LIB)
 
 $(MLX):
-			@echo " [ .. ] | Compiling minilibx.."
+
+			@echo "\033[0;33m  [ .. ] | Compiling minilibx..\033"
 			@make -s -C minilibx-linux
-			@echo " [ OK ] | Minilibx ready!"
+			@echo "\033[0;32m [ OK ] | Minilibx ready!\033[0m"
 
 $(LFT):		
-			@echo " [ .. ] | Compiling libft.."
+			@echo "\033[0;33m [ .. ] | Compiling libft..\033"
 			@make -s -C libft
-			@echo " [ OK ] | Libft ready!"
+			@echo "\033[0;32m [ OK ] | Libft ready!\033[0m"
 
 obj:
 			@mkdir -p obj
 
-obj/%.o: src/%.c
-	mkdir -p $(dir $@)
-	$(CC) $(FLAGS) $(INC) -c $< -o $@
+obj/%.o: 	src/%.c
+			@mkdir -p $(dir $@)
+			$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-			@make -s $@ -C libft
+			@make -sC libft clean
 			@rm -rf $(OBJ) obj
-			@echo "object files removed."
+			@echo "\033[0;32mObject files removed.\033[0m"
 
 fclean:		clean
-			@make -s $@ -C libft
+			@make -sC libft fclean
 			@rm -rf $(NAME)
-			@echo "binary file removed."
+			@echo "\033[0;32mbinary file removed.\033[0m"
 
-re:			fclean all
+re:			fclean norm all
 
-.PHONY:		all clean fclean re
+norm :
+			@norminette
+			@echo "\033[0;32mNorminette: OK!\033[0m"
+
+.PHONY:		all clean fclean rej
