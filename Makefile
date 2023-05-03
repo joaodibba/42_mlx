@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jalves-c <jalves-c@student.42lisboa.com>   +#+  +:+       +#+         #
+#    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/03 14:43:10 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/03 15:05:17 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ fclean:		clean
 re:			fclean norm all
 
 norm :
-			@norminette
+			@norminette src
 			@echo "\033[0;32mNorminette: OK!\033[0m"
 
 .PHONY:		all clean fclean rej
