@@ -6,14 +6,14 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:08:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/03 15:08:16 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:56:36 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/mlxtest.h"
 
 #define PLAYER_SIZE 10
-#define PLAYER_SPEED 100
+#define PLAYER_SPEED 10
 
 		//if (img->endian != 0)
 		//big endian, MSB is the leftmost bit
@@ -144,6 +144,7 @@ int	main(void)
 									&data.img.line_len, &data.img.endian);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
+	mlx_hook(data.win_ptr, DestroyNotify, NoEventMask, &handle_keypress, &data);
 	mlx_loop(data.mlx_ptr);
 	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
 	mlx_destroy_display(data.mlx_ptr);
