@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/03 15:05:17 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/03 15:09:19 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
 
-all:		$(MLX) $(LFT) obj $(NAME)
+all:		$(MLX) $(LFT) obj $(NAME) #norm
 
 $(NAME):	$(OBJ)
 			$(CC) $(FLAGS)-o $@ $^ $(LIB)
@@ -56,11 +56,11 @@ fclean:		clean
 
 			@echo "\033[0;32mbinary file removed.\033[0m"
 
-re:			fclean norm all
+re:			fclean all #norm
 
 norm :
 			@norminette src
 			@echo "\033[0;32mNorminette: OK!\033[0m"
 
-.PHONY:		all clean fclean rej
+.PHONY:		all clean fclean re
 
