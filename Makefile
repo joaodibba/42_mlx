@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/11 21:40:42 by jalves-c         ###   ########.fr        #
+#    Created: 2023/05/11 21:44:13 by jalves-c          #+#    #+#              #
+#    Updated: 2023/05/11 21:44:42 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME	=	mlxtest
 CC		=	@gcc
@@ -27,7 +28,7 @@ YELLOW =	\033[0;33m
 RESET =		\033[0m
 
 
-all:		$(MLX) $(LFT) obj $(NAME)
+all:		$(MLX) $(LFT) obj $(NAME) #norm
 
 $(NAME):	$(OBJ)
 			$(CC) $(FLAGS) -o $@ $^ $(LIB)
