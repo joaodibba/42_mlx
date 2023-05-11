@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 21:44:13 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/11 23:36:49 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/11 23:37:28 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,6 @@ INC		=	-I ./libft -I ./mlx
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
-#ifeq ($(UNAME), Darwin)
-#	LIB		=	-L ./libft -lft -L ./mlx -framework OpenGL -framework AppKit
-#else
-#endif
-
 #COLORS
 RED =		\033[0;31m
 GREEN =		\033[0;32m
@@ -35,9 +30,7 @@ RESET =		\033[0m
 all:		$(MLX) $(LFT) obj $(NAME)
 
 $(NAME):	$(OBJ)
-			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
 			$(CC) $(FLAGS) -o $@ $^ $(LIB)
-			@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
 
 $(MLX):
 			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
