@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 21:44:13 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/11 23:37:28 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/11 23:37:52 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ RESET =		\033[0m
 all:		$(MLX) $(LFT) obj $(NAME)
 
 $(NAME):	$(OBJ)
+			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
 			$(CC) $(FLAGS) -o $@ $^ $(LIB)
+			@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
 
 $(MLX):
 			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
