@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 21:44:13 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/11 21:44:42 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/11 22:08:14 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 LFT		=	libft/libft.a
 MLX 	=	mlx/libmlx.a
 INC		=	-I ./libft -I ./mlx
-LIB		=	-L ./libft -lft -L ./mlx -framework Cocoa -framework OpenGL -framework IOKit
+LIB		=	-L ./libft -lft -L ./mlx -framework OpenGL -framework AppKit
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 

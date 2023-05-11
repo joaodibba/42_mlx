@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:23:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 21:40:55 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 22:03:44 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 
 #define MLX_ERROR 1
 #define ESCAPE 65307
+#define KeyPress 2
+#define KeyPressMask 1L << 0
+#define NoEventMask 0
+#define DestroyNotify 17
 
 //colors
 #define RED_PIXEL 0XFF0000
