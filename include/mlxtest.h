@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   mlxtest.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalves-c <jalves-c@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:23:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/03 14:36:06 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:40:55 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLXTEST_H
 # define MLXTEST_H
 
-# include "../minilibx-linux/mlx.h"
+# include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <mlx.h>
 
 #define WINDOW_WIDTH 500
 #define WINDOW_HEIGHT 500
